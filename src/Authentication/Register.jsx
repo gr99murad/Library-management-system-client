@@ -3,6 +3,9 @@ import React, { useContext, useState } from 'react';
 import registerLottieData from '../assets/lottie/register.json';
 import AuthContext from '../context/AuthContext/AuthContext';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -29,6 +32,7 @@ const Register = () => {
 
         createUser(email, password)
         .then(result => {
+          toast.success('Registration successful!');
           console.log(result.user)
         })
         .catch(error => {
@@ -87,6 +91,7 @@ const Register = () => {
       </p>
     </div>
   </div>
+  <ToastContainer></ToastContainer>
 </div>
     );
 };

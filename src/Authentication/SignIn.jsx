@@ -5,6 +5,8 @@ import AuthContext from '../context/AuthContext/AuthContext';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import auth from '../Firebase/firebase.init';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
 
@@ -21,8 +23,10 @@ const SignIn = () => {
 
         signInUser(email, password)
         .then(result => {
+          
           console.log('sign in',result.user);
           navigate('/');
+          toast.success('Login successful!');
         })
         .catch(error => {
           setError(error.message)
@@ -35,8 +39,10 @@ const SignIn = () => {
       const provider = new GoogleAuthProvider();
       signInWithPopup(auth, provider)
       .then(result => {
+        
         console.log('Google sign in', result.user);
         navigate('/');
+        toast.success('Google Login successful!');
       })
       .catch(error => {
         setError(error.message);
@@ -81,6 +87,7 @@ const SignIn = () => {
       </p>
     </div>
   </div>
+  
 </div>
     );
 };

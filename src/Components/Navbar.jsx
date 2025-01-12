@@ -1,28 +1,43 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import AuthContext from '../context/AuthContext/AuthContext';
+import { getAuth, signOut } from 'firebase/auth';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
   const {user, setOutUser} = useContext(AuthContext);
 
   const handleLogout = () => {
-    signOutUser().then(() => {
-      console.log('User LOgged Out');
+    const auth = getAuth();
+    signOut(auth)
+    .then(() => {
+      
+      // console.log('User LOgged Out');
+      setOutUser(null);
+      toast.success('Logged out');
     })
     .catch(error => {
       console.error(error.message);
     });
   };
-  const links = <>
-  <li><a>Item 1</a></li>
-        
-  <li><a>Item 3</a></li>
-  
-  
-  
+  const links = (
+  <>
+  <li><NavLink to="/">Home</NavLink></li>
+   {user && (
+    <>
+    <li><NavLink to="/allBooks">All Books</NavLink></li>
+    <li><NavLink to="/addBook">Add Book</NavLink></li>
+    <li><NavLink to="/borrowedBooks">Borrowed Books</NavLink></li>
+
+
+    </>
+   )}     
   </>
+  );
     return (
         <div className="navbar bg-base-100">
+          <ToastContainer></ToastContainer>
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -65,14 +80,15 @@ const Navbar = () => {
         <img src={user.photoURL || 'avatar.png'} alt="User Avatar" className='w-10 h-10 rounded-full cursor-pointer' />
       </div>
 
-      <ul className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52'>
-        <li><button onClick={handleLogout} className='btn btn-ghost bg-red-500'>Logout</button></li>
-      </ul>
+      
+        <button onClick={handleLogout} className='btn btn-secondary'>Logout</button>
+      
     </div>
   )
 }
 
   </div>
+  
 </div>
     );
 };
