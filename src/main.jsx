@@ -18,6 +18,8 @@ import BorrowedBooks from './Pages/BorrowedBooks.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
 import BookCategories from './Components/BookCategories.jsx';
 import BookList from './Components/BookList.jsx';
+import DetailsBooks from './Components/DetailsBooks.jsx';
+import PrivateRoute from './Components/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,13 @@ const router = createBrowserRouter([
       {
         path: "/books/:category",
         element: <BookList></BookList>,
+      },
+      {
+        path: "/book/:id",
+        element: <PrivateRoute>
+          <DetailsBooks></DetailsBooks>
+        </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
       },
     ]
   },

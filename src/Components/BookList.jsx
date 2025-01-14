@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
 
 const BookList = () => {
@@ -7,6 +7,7 @@ const BookList = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:5000/books/${category}`)
@@ -21,6 +22,11 @@ const BookList = () => {
             setLoading(false);
         });
     }, [category]);
+
+    const handleDetails = (id) => {
+      navigate(`/book/${id}`);
+      return null;
+    }
     return (
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7'>
         {books.map(book => (
@@ -39,7 +45,7 @@ const BookList = () => {
               <p>Quantity: {book.quantity}</p>
               <ReactStars count={5} value={book.rating} size={24} activeColor='#ffd700'></ReactStars>
               <div className="card-actions">
-                <button className="btn btn-primary">Details</button>
+                <button className="btn btn-primary" onClick={() => handleDetails(book._id)}>Details</button>
               </div>
             </div>
           </div>
