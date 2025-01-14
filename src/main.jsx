@@ -16,6 +16,8 @@ import AllBooks from './Pages/AllBooks.jsx';
 import AddBook from './Pages/AddBook.jsx';
 import BorrowedBooks from './Pages/BorrowedBooks.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
+import BookCategories from './Components/BookCategories.jsx';
+import BookList from './Components/BookList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
       {
         path: "/borrowedBooks",
         element: <BorrowedBooks></BorrowedBooks>,
+      },
+      {
+        path: "/categories",
+        element: <BookCategories></BookCategories>,
+      },
+      {
+        path: "/books/:category",
+        element: <BookList></BookList>,
       },
     ]
   },
