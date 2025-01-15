@@ -1,91 +1,117 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { data, useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthContext/AuthContext';
+import Modal from './Modal';
 
 const DetailsBooks = () => {
+
     const {id} = useParams();
-    const [book, setBook] = useState(null);
-    const [showModal, setShowModal] = useState(false);
     const {user} = useContext(AuthContext);
-    const navigate = useNavigate();
-    const books = useLoaderData();
-    // console.log(books);
+    const [book, setBook] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [returnDate, setReturnDate] = useState('');
+    const [error, setError] = useState('');
 
-    // useEffect(() => {
-    //     const selectedBook = books.find((b) => b._id === id);
-    //     setBook(selectedBook);
-    // }, [books,id])
+    useEffect(() => {
+        const fetchBookDetails = async () => {
+            const response = await fetch(`http://localhost:5000/book/${id}`)
+            const data = await response.json()
+            setBook(data);
+        };
+        fetchBookDetails();
+    }, [id]);
 
-    
-    const handleBorrow = (e) => {
+    const handleBorrowClick = () => {
+        
+        if(!user){
+            setError('You must be logged in to borrow a book');
+            return;
+        }
+        console.log('Borrow button clicked');
+        setIsModalOpen(true);
+    };
+
+
+    const handleBorrowSubmit = async (e) => {
         e.preventDefault();
-        const returnDate = e.target.returnDate.value;
+        if(!returnDate){
+            setError('Please select a return date');
+            return;
+        }
 
+        const borrowData = {
+            name: user.displayName,
+            email: user.email,
+            returnDate,
+        };
 
-        fetch('/borrowBook', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                bookId: book._id,
-                returnDate: returnDate,
-                userName: user.displayName,
-                userEmail: user.email,
-            }),
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                alert('Book borrowed successfully!');
-                setShowModal(false);
-                navigate('/borrowedBooks');
+        
+        try{
+            const response = await fetch(`http://localhost:5000/book/borrow/${id}`,{
+
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(borrowData),
+            });
+
+            const result = await response.json();
+            if(result.success){
+                alert('Book borrowed successfully');
+                setIsModalOpen(false);
             }
             else{
-                alert('Book out of stock');
+                setError(result.message);
             }
-        })
-        .catch(err => console.error('Error:', err));
+        } 
+        catch(error){
+            setError('Error borrowing the book');
+        }
+
     };
     return (
-        <div>
-            {books && (
-                <div className='card bg-base-100 w-96 shadow-xl'>
-                    <div className='card-body'>
-                    <h1 className='card-title'>{books.name}</h1>
-                    <p>{books.description}</p>
-                    <p>Quantity: {books.quantity}</p>
-                    <div className='card-actions justify-end'>
-                    <button className='btn btn-primary' onClick={() => setShowModal(true)} disabled={books.quantity <= 0}>Borrow</button>
-                    </div>
-                </div>
-                </div>
+      <div>
+        {book ? (
+          <div className="card bg-base-100 w-96 shadow-xl">
+            <figure className="px-10 pt-10">
+              <img src={book.image} alt="Shoes" className="rounded-xl" />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{book.name}</h2>
+              <p>{book.author}</p>
+              <p>{book.description}</p>
+              <p>Rating: {book.rating}</p>
+              <p>Quantity: {book.quantity}</p>
+              <div className="card-actions">
+                <button
+                  onClick={handleBorrowClick}
+                  disabled={book.quantity === 0}
+                  className="btn btn-primary"
+                >
+                  Borrow
+                </button>
+              </div>
+            </div>
+
+            {isModalOpen && (
+              <Modal onClose={() => setIsModalOpen(false)}>
+                <form onSubmit={handleBorrowSubmit}>
+                  <h3>Borrow {book.name}</h3>
+                  <p>Return Date:</p>
+                  <input
+                    type="date"
+                    value={returnDate}
+                    onChange={(e) => setReturnDate(e.target.value)}
+                  />
+                  <button type="submit">Submit</button>
+                </form>
+                {error && <p>{error}</p>}
+              </Modal>
             )}
-
-
-            {showModal && (
-                <div className='modal-overlay'>
-                    <div className='modal'>
-                    <div className='modal-content'>
-                        <h2>Borrow Book</h2>
-                        <form onSubmit={handleBorrow}>
-                            <p>Name: {user.displayName}</p>
-                            <p>Email: {user.email}</p>
-                            <label>
-                                Return Date: <input type='date' name='returnDate' required></input>
-                            </label>
-                            <div className='modal-actions'>
-                            <button type='submit' className='btn btn-success'>Confirm</button>
-                            <button onClick={() => setShowModal(false)}>Cancel</button>
-                            </div>
-                        </form>
-
-                    </div>
-
-                </div>
-                </div>
-            )}
-        </div>
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     );
 };
 
