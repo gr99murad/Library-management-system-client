@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthContext/AuthContext';
-import Modal from './Modal';
+
 
 const DetailsBooks = () => {
 
@@ -21,13 +21,18 @@ const DetailsBooks = () => {
         fetchBookDetails();
     }, [id]);
 
-    const handleBorrowClick = () => {
+    const handleBorrowClick = (e) => {
         
+        e.preventDefault();
         if(!user){
             setError('You must be logged in to borrow a book');
             return;
         }
-        console.log('Borrow button clicked');
+        if(book.quantity === 0){
+            setError('This book is out of stock');
+            return;
+        }
+        // console.log('Borrow button clicked');
         setIsModalOpen(true);
     };
 
@@ -68,6 +73,10 @@ const DetailsBooks = () => {
         }
 
     };
+
+    const handleCloseModal = () =>{
+        setIsModalOpen(false);
+    };
     return (
       <div>
         {book ? (
@@ -92,24 +101,45 @@ const DetailsBooks = () => {
               </div>
             </div>
 
-            {isModalOpen && (
-              <Modal onClose={() => setIsModalOpen(false)}>
-                <form onSubmit={handleBorrowSubmit}>
-                  <h3>Borrow {book.name}</h3>
-                  <p>Return Date:</p>
-                  <input
-                    type="date"
-                    value={returnDate}
-                    onChange={(e) => setReturnDate(e.target.value)}
-                  />
-                  <button type="submit">Submit</button>
-                </form>
-                {error && <p>{error}</p>}
-              </Modal>
-            )}
+            
           </div>
         ) : (
           <p>Loading...</p>
+        )}
+
+        {isModalOpen && (
+            <div className='modal modal-open'>
+                <div className='modal-box'>
+                    <h2 className='text-xl font-bold mb-4'>Borrow Book</h2>
+                    {error && <p>{error}</p>}
+                    <form onSubmit={handleBorrowSubmit}>
+                        <div className='form-control mb-4'>
+                            <label className='label'>Name</label>
+                            <input type="text" value={user ? user.displayName: ''} readOnly className='input input-bordered' />
+
+                        </div>
+
+                        <div className='form-control mb-4'>
+                            <label className='label'>Email</label>
+                            <input type="email" value={user ? user.email: ''} readOnly className='input input-bordered' />
+
+                        </div>
+
+                        <div className='form-control mb-4'>
+                            <label className='label'>Return Date</label>
+                            <input type="date" value={returnDate} onChange={(e) => setReturnDate(e.target.value)} className='input input-bordered' />
+
+                        </div>
+                        <div className='modal-action'>
+                            <button type='submit' className='btn btn-primary'>Confirm</button>
+                            <button className='btn' onClick={handleCloseModal}>Cancel</button>
+
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
         )}
       </div>
     );
