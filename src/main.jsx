@@ -42,7 +42,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/borrowedBooks",
-        element: <BorrowedBooks></BorrowedBooks>,
+        element: <PrivateRoute>
+          <BorrowedBooks></BorrowedBooks>
+        </PrivateRoute>,
       },
       {
         path: "/categories",
