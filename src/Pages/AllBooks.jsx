@@ -7,7 +7,7 @@ const AllBooks = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showAvailable, setShowAvailable] = useState(false);
-    const [viewMode, setViewMode] = useState('card');
+    const [viewMode, setViewMode] = useState('Card View');
 
     useEffect(() => {
         fetch('http://localhost:5000/books')
@@ -49,6 +49,8 @@ const AllBooks = () => {
         </button>
 
         <select onChange={handleViewChange} value={viewMode} className='select select-bordered'>
+        <option value="">Select View</option>
+
           <option value="Card">Card View</option>
           <option value="Table">Table View</option>
 

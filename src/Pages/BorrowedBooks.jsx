@@ -35,7 +35,7 @@ const BorrowedBooks = () => {
             { borrowedBooks.length === 0 ? (
                 <p>No borrowed Books.</p>
             ):(
-                <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
                     {borrowedBooks.map((book) => (
                         <div key={book._id} className="card bg-base-100 w-96 shadow-xl">
                         <figure className="px-10 pt-10">
