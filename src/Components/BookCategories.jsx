@@ -22,6 +22,7 @@ const BookCategories = () => {
     }, []);
     return (
         <div className=''>
+            <h2 className='text-4xl font-bold mt-10'>Book Category</h2>
             {categories.map(category => (
                 <div className='my-4 py-4'>
                     <div className="card bg-base-100 w-96 shadow-xl">

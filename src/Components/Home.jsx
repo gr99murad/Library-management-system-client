@@ -8,9 +8,11 @@ import UpComingEvents from './UpComingEvents';
 
 const Home = () => {
     return (
-        <div>
+        <div className=''>
             <Banner></Banner>
+            <div className='py-10'>
             <BookCategories></BookCategories>
+            </div>
             <FeaturedAuthors></FeaturedAuthors>
             <UpComingEvents></UpComingEvents>
 

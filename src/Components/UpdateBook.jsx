@@ -21,7 +21,8 @@ const UpdateBook = () => {
             setBook(data);
             setImage(data.image);
             setName(data.name);
-            setAuthor(data.category);
+            setAuthor(data.author);
+            setCategory(data.category);
             setRating(data.rating);
             setLoading(false);
         })
@@ -34,6 +35,11 @@ const UpdateBook = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
+
+        if(!name || !author || !category || rating < 1 || rating > 5){
+            setError('Please fill all fields correctly');
+            return;
+        }
         const updatedBook = {
             name,
             author,
@@ -49,7 +55,7 @@ const UpdateBook = () => {
             body: JSON.stringify(updatedBook),
         })
         .then(res => res.json())
-        .then(data => {
+        .then(() => {
             navigate(`/books/${category}`);
             
         })
@@ -70,40 +76,41 @@ const UpdateBook = () => {
 
     return (
         <div className='form-container'>
-            <h2>Update Book</h2>
+            <h2 className='text-4xl font-bold text-center'>Update Book</h2>
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>
-                    <label>Image URL:</label>
-                    <input type="text" value={image} onChange={(e) => setImage(e.target.value)} placeholder='Enter image URL' />
+                    <label className='label'>Image URL:</label>
+                    <input className='input input-bordered w-96' type="text" value={image} onChange={(e) => setImage(e.target.value)} placeholder='Enter image URL' />
 
                 </div>
                 <div className='form-group'>
-                    <label>Name</label>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                    <label className='label'>Name:</label>
+                    <input className='input input-bordered' type="text" value={name} onChange={(e) => setName(e.target.value)} />
 
                 </div>
                 <div className='form-group'>
-                    <label> Author Name</label>
-                    <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
+                    <label className='label'> Author Name:</label>
+                    <input className='input input-bordered' type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
 
                 </div>
                 <div className='form-group'>
-                    <label>Category</label>
-                    <select value={category} onChange={(e) => setCategory(e.target.value)} >
-                        <option value="fiction">Fiction</option>
-                        <option value="science">Science</option>
-                        <option value="history">History</option>
-                        <option value="children's Books">Children's Books</option>
+                    <label className='label'>Category</label>
+                    <select  value={category} onChange={(e) => setCategory(e.target.value)} >
+                        <option value="">Select one</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Science">Science</option>
+                        <option value="History">History</option>
+                        <option value="Children's Books">Children's Books</option>
                     </select>
 
                 </div>
 
                 <div className='form-group'>
-                    <label>Rating</label>
-                    <input type="number" min="1" max="5" value={rating} onChange={(e) => setRating(e.target.value)} />
+                    <label className='label'>Rating</label>
+                    <input className='input input-bordered' type="number" min="1" max="5" value={rating} onChange={(e) => setRating(e.target.value)} />
 
                 </div>
-                <button type='submit'>Submit</button>
+                <button className='btn btn-primary my-4' type='submit'>Submit</button>
 
             </form>
             

@@ -43,6 +43,7 @@ const BookList = () => {
               <p>Author: {book.author}</p>
               <p>Category: {book.category}</p>
               <p>Quantity: {book.quantity}</p>
+              <p>Rating: {book.rating}</p>
               <ReactStars count={5} value={book.rating} size={24} activeColor='#ffd700'></ReactStars>
               <div className="card-actions">
                 <button className="btn btn-primary" onClick={() => handleDetails(book._id)}>Details</button>
