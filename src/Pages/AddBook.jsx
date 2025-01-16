@@ -87,8 +87,22 @@ const AddBook = () => {
                 
             </form>
             <div>
-                <h3>Book content</h3>
-                <p>Provide more information about the book</p>
+                <h3 className='text-xl font-bold text-center'>Book content</h3>
+                <p>This section provides additional information about the book. It helps the reader get a deeper understanding of its context, themes, and what makes it special. Below are key elements to describe the book:</p>
+
+                <div>
+                    <h4 className='text-xl font-semibold'>Setting</h4>
+                    <p>The setting provides context for the story. Example: Takes place in a small town in the 1920s, or on a spaceship in the future.</p>
+                </div>
+
+                <div>
+                    <h4 className='text-xl font-semibold'>
+                    Themes
+                    </h4>
+                    <p>Themes are the underlying messages or ideas explored in the book. Example: Friendship, Loyalty, Betrayal, Hope, etc.</p>
+
+                </div>
+                
             </div>
 
         </div>

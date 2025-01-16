@@ -17,19 +17,19 @@ const Banner = () => {
    
     
     return (
-        <div >
+        <div className='max-w-screen-xl mx-auto px-4'>
             <Slider {...setting}>
-                <div>
-                    <h3>Welcome to Our Library</h3>
-                    <p>Explore a world of knowledge with our extensive collection of books across various genres.</p>
+                <div className='flex justify-center h-[300px] bg-gradient-to-br from-blue-500 via-cyan-400 to-blue-600 text-white text-center rounded-lg p-6 shadow-lg'>
+                    <h3 className='text-4xl font-bold mb-4 text-shadow-lg'>Welcome to Our Library</h3>
+                    <p className='text-lg max-w-4xl mx-auto leading-relaxed'>Explore a world of knowledge with our extensive collection of books across various genres.</p>
                 </div>
-                <div>
-                    <h3>New Arrivals</h3>
-                    <p>Check out the latest additions to our library and stay updated with trending titles.</p>
+                <div className='flex justify-center h-[300px] bg-gradient-to-br from-green-500 via-cyan-400 to-green-600 text-white text-center rounded-lg p-6 shadow-lg'>
+                    <h3 className='text-4xl font-bold mb-4 text-shadow-lg'>New Arrivals</h3>
+                    <p className='text-lg max-w-4xl mx-auto leading-relaxed'>Check out the latest additions to our library and stay updated with trending titles.</p>
                 </div>
-                <div>
-                    <h3>Join Our Community</h3>
-                    <p>Become a member today and enjoy exclusive benefits, including book reservation</p>
+                <div className='flex justify-center h-[300px] bg-gradient-to-br from-purple-500 via-cyan-400 to-purple-600 text-white text-center rounded-lg p-6 shadow-lg'>
+                    <h3 className='text-4xl font-bold mb-4 text-shadow-lg'>Join Our Community</h3>
+                    <p className='text-lg max-w-4xl mx-auto leading-relaxed'>Become a member today and enjoy exclusive benefits, including book reservation</p>
                 </div>
             </Slider>
         </div>
