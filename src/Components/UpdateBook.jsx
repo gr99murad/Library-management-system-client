@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateBook = () => {
     const {id} = useParams();
@@ -56,11 +57,13 @@ const UpdateBook = () => {
         })
         .then(res => res.json())
         .then(() => {
+             Swal.fire('Success', 'Book updated successfully!', 'success');
+            
             navigate(`/books/${category}`);
             
         })
         .catch(error => {
-            setError('Failed to update book');
+            Swal.fire('Error', 'Failed to update book', 'error');
             console.error(error);
         });
     };

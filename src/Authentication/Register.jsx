@@ -12,32 +12,39 @@ import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
   const {createUser} = useContext(AuthContext);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  
 
-    const handleRegister = e =>{
+    const handleRegister = async (e) =>{
         e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const photoURL = form.photoURL.value;
-        // console.log(email,password);
+        setLoading(true);
+        const {name, email, password, photoURL} = e.target.elements;
 
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
         if(!passwordRegex.test(password)){
           setError('Password must have an uppercase letter, a lowercase letter, and at least 6 characters');
+          toast.error('Password must meet the requirement');
+          setLoading(false);
           return;
         }
 
-        createUser(email, password)
-        .then(result => {
+        try{
+          const result = await createUser(email.value, password.value)
+        
           toast.success('Registration successful!');
           console.log(result.user)
-        })
-        .catch(error => {
-          console.log(error.message)
-        })
+        
+        }
+        catch(error) {
+          // console.log(error.message)
+          setError(error.message);
+          toast.error(error.message);
+
+        } finally{
+          setLoading(false);
+        }
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -78,12 +85,10 @@ const Register = () => {
           </label>
           <input type="password" name='password' placeholder="password" className="input input-bordered" required />
           {error && <p className='text-red-500 text-sm mt-2'>{error}</p>}
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-          </label>
+
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Register</button>
+          <button className="btn btn-primary" disabled={loading}>{loading ? 'loading...' : 'Register'}</button>
         </div>
       </form>
       <p className='text-center mt-4'>

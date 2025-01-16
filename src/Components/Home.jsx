@@ -7,8 +7,11 @@ import UpComingEvents from './UpComingEvents';
 
 
 const Home = () => {
+
+    
     return (
         <div className=''>
+            
             <Banner></Banner>
             <div className='py-10'>
             <BookCategories></BookCategories>

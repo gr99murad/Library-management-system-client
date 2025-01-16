@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AuthContext from '../context/AuthContext/AuthContext';
+import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2';
 
 
 const DetailsBooks = () => {
@@ -61,15 +63,17 @@ const DetailsBooks = () => {
 
             const result = await response.json();
             if(result.success){
-                alert('Book borrowed successfully');
+                Swal.fire('Success', 'Book borrowed successfully!', 'success');
                 setIsModalOpen(false);
             }
             else{
-                setError(result.message);
+                Swal.fire('Error', result.message, 'error');
+
+                
             }
         } 
         catch(error){
-            setError('Error borrowing the book');
+            Swal.fire('Error','Error borrowing the book', 'error');
         }
 
     };

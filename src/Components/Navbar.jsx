@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import AuthContext from '../context/AuthContext/AuthContext';
 import { getAuth, signOut } from 'firebase/auth';
-import 'react-toastify/dist/ReactToastify.css';
-import { toast, ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
   const {user, setOutUser} = useContext(AuthContext);
@@ -14,11 +13,12 @@ const Navbar = () => {
     .then(() => {
       
       // console.log('User LOgged Out');
-      setOutUser(null);
-      toast.success('Logged out');
+      // setOutUser(null);
+      Swal.fire('Success', 'Logout successfully!', 'success');
     })
     .catch(error => {
       console.error(error.message);
+      Swal.fire('Error',error.message , 'error');
     });
   };
   const links = (
@@ -37,7 +37,7 @@ const Navbar = () => {
   );
     return (
         <div className="navbar bg-base-100">
-          <ToastContainer></ToastContainer>
+          
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

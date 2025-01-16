@@ -21,9 +21,14 @@ const AllBooks = () => {
             setError('Failed to load books data');
             setLoading(false);
         });
+
+        
     }, []);
 
+    
+
     const toggleShowAvailable = () => {
+      
       setShowAvailable(!showAvailable);
     };
 

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext/AuthContext';
+import Swal from 'sweetalert2';
 
 const BorrowedBooks = () => {
     const [borrowedBooks, setBorrowedBooks] = useState([]);
@@ -23,9 +24,12 @@ const BorrowedBooks = () => {
         const data = await response.json();
         if(data.success){
             setBorrowedBooks(borrowedBooks.filter(book => book._id !== borrowedBookId));
+            Swal.fire('Success', 'Book returned successfully!', 'success');
+            
         }
         else{
-            alert(data.message);
+            Swal.fire('Error', data.message, 'error');
+            
         }
     }
     return (

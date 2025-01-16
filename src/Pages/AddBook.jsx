@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+
 
 const AddBook = () => {
 
@@ -25,14 +27,15 @@ const AddBook = () => {
         try{
             const response = await axios.post('http://localhost:5000/addBook',formData);
             if(response.data.success){
-                alert('Book added successfully!');
+                Swal.fire('Success', 'Book added successfully!', 'success');
                 navigate('/allBooks');
             }
 
         }
         catch(error){
             console.error('Error adding book:', error);
-            alert('Failed to add book');
+            Swal.fire('Error', 'Failed to add book!', 'error');
+           
         }
     };
     return (
