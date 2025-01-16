@@ -8,14 +8,14 @@ const BorrowedBooks = () => {
 
     useEffect(() => {
         if(user?.email){
-            fetch(`http://localhost:5000/borrowedBooks/${user.email}`)
+            fetch(`https://library-management-system-server-five.vercel.app/borrowedBooks/${user.email}`)
             .then(res => res.json())
             .then(data => setBorrowedBooks(data));
         }
     }, [user]);
 
     const handleReturnBook = async (borrowedBookId, bookId) =>{
-        const response = await fetch(`http://localhost:5000/borrowedBooks/return/${borrowedBookId}`,{
+        const response = await fetch(`https://library-management-system-server-five.vercel.app/borrowedBooks/return/${borrowedBookId}`,{
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({ bookId }),

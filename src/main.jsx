@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <DetailsBooks></DetailsBooks>
         </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+        loader: ({params}) => fetch(`https://library-management-system-server-five.vercel.app/book/${params.id}`)
       },
       {
         path: "/updateBook/:id",

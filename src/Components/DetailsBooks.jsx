@@ -16,7 +16,7 @@ const DetailsBooks = () => {
 
     useEffect(() => {
         const fetchBookDetails = async () => {
-            const response = await fetch(`http://localhost:5000/book/${id}`)
+            const response = await fetch(`https://library-management-system-server-five.vercel.app/book/${id}`)
             const data = await response.json()
             setBook(data);
         };
@@ -54,7 +54,7 @@ const DetailsBooks = () => {
 
         
         try{
-            const response = await fetch(`http://localhost:5000/book/borrow/${id}`,{
+            const response = await fetch(`https://library-management-system-server-five.vercel.app/book/borrow/${id}`,{
 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

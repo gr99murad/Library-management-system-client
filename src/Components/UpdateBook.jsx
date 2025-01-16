@@ -16,7 +16,7 @@ const UpdateBook = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/book/${id}`)
+        fetch(`https://library-management-system-server-five.vercel.app/book/${id}`)
         .then(res => res.json())
         .then(data => {
             setBook(data);
@@ -48,7 +48,7 @@ const UpdateBook = () => {
             rating,
             image,
         };
-        fetch(`http://localhost:5000/book/${id}`, {
+        fetch(`https://library-management-system-server-five.vercel.app/book/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ const BookList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/books/${category}`)
+        fetch(`https://library-management-system-server-five.vercel.app/books/${category}`)
         .then(res => res.json())
         .then(data => {
             setBooks(data);

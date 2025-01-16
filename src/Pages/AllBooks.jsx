@@ -10,7 +10,7 @@ const AllBooks = () => {
     const [viewMode, setViewMode] = useState('Card View');
 
     useEffect(() => {
-        fetch('http://localhost:5000/books')
+        fetch('https://library-management-system-server-five.vercel.app/books')
         .then(res => res.json())
         .then(data => {
             setBooks(data);

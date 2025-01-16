@@ -25,7 +25,7 @@ const AddBook = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.post('http://localhost:5000/addBook',formData);
+            const response = await axios.post('https://library-management-system-server-five.vercel.app/addBook',formData);
             if(response.data.success){
                 Swal.fire('Success', 'Book added successfully!', 'success');
                 navigate('/allBooks');

@@ -8,7 +8,7 @@ const BookCategories = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://library-management-system-server-five.vercel.app/categories')
         .then(res => res.json())
         .then(data => {
             setCategories(data);
