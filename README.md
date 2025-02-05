@@ -1,6 +1,7 @@
 <div align="center">
   <img height="200" src="https://i.ibb.co.com/5WQhmp6S/Screenshot-2025-02-05-172740.png" />
 </div>
+
 <!-- Library Management System -->
 
 <h1>📚 Library Management System</h1>
@@ -86,4 +87,40 @@
 
 <hr>
 
+<h2>🚀 Running the Project Locally</h2>
+
+<p>To run the Library Management System project locally, follow these steps:</p>
+
+<ol>
+  <li><strong>Clone the Repository:</strong>
+    <pre><code>git clone https://github.com/gr99murad/Library-Management-System.git</code></pre>
+  </li>
+  
+  <li><strong>Install Dependencies:</strong> 
+    Navigate to the project folder and install the necessary dependencies by running:
+    <pre><code>npm i</code></pre>
+  </li>
+  
+  <li><strong>Create a Firebase Project:</strong>
+    - Go to the <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a>
+    - Create a new project and obtain the Firebase configuration keys for Authentication.
+  </li>
+  
+  <li><strong>Run the Development Server:</strong> 
+    Start the development server by running:
+    <pre><code>npm run dev</code></pre>
+    The app will be accessible at <code>http://localhost:5000</code>.
+  </li>
+
+  <li><strong>Connect to Backend:</strong> 
+    Ensure the Express backend server is running. Update API URLs in the frontend if required.
+  </li>
+  
+  <li><strong>Enjoy!</strong> local instance of the Library Management System should now be up and running.
+  </li>
+</ol>
+
+<hr>
+
 <p>📌 <strong>Feel free to contribute, explore, and enhance the Library Management System!</strong> 🎉</p>
+
