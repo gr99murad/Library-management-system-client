@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="1000" src="https://i.ibb.co.com/5WQhmp6S/Screenshot-2025-02-05-172740.png" />
+  <img height="200" src="https://i.ibb.co.com/5WQhmp6S/Screenshot-2025-02-05-172740.png" />
 </div>
 <!-- Library Management System -->
 
