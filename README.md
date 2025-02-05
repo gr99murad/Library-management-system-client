@@ -37,6 +37,38 @@
 
 <hr>
 
+<h2>🛠️ Technologies Used</h2>
+
+<h3>Frontend</h3>
+<ul>
+  <li>⚛️ React</li>
+  <li>🌍 React Router</li>
+  <li>🎨 Tailwind CSS</li>
+</ul>
+
+<h3>Backend</h3>
+<ul>
+  <li>⚡ Express.js</li>
+  <li>🛢️ MongoDB</li>
+  <li>🟢 Node.js</li>
+</ul>
+
+<h3>Authentication & Hosting</h3>
+<ul>
+  <li>🔐 Firebase Authentication</li>
+  <li>☁️ Firebase Hosting</li>
+</ul>
+
+<h3>Development & Deployment</h3>
+<ul>
+  <li>📦 dotenv - For managing environment variables</li>
+  <li>🔗 Axios - For making HTTP requests</li>
+  <li>🐙 GitHub - Version control and collaboration</li>
+  <li>🚀 Vercel / Netlify - Alternative hosting platforms</li>
+</ul>
+
+<hr>
+
 <h2>📦 NPM Packages Used</h2>
 
 <ul>
