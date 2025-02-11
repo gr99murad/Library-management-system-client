@@ -28,25 +28,23 @@ const BookList = () => {
       return null;
     }
     return (
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7'>
+      <div className='py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7'>
         {books.map(book => (
-            <div key={book._id} className="card bg-base-100 shadow-xl">
+            <div key={book._id} className="card bg-[#e1e0eb] w-96 shadow-xl">
             <figure className="px-10 pt-10">
               <img
                 src= {book.image}
                 alt={book.name}
-                className="rounded-xl"
+                className="rounded-xl h-64 "
               />
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title">{book.name}</h2>
-              <p>Author: {book.author}</p>
-              <p>Category: {book.category}</p>
-              <p>Quantity: {book.quantity}</p>
+              <p>{book.description}</p>
               <p>Rating: {book.rating}</p>
               <ReactStars count={5} value={book.rating} size={24} activeColor='#ffd700'></ReactStars>
               <div className="card-actions">
-                <button className="btn btn-primary" onClick={() => handleDetails(book._id)}>Details</button>
+                <button className="btn bg-accent" onClick={() => handleDetails(book._id)}>Details</button>
               </div>
             </div>
           </div>

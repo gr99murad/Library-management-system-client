@@ -46,14 +46,14 @@ const AllBooks = () => {
 
     const filteredBooks = showAvailable ? books.filter(book => book.quantity > 0) : books;
     return (
-      <div>
+      <div className='py-24'>
 
        <div className='flex gap-10 justify-center pt-4'>
-       <button onClick={toggleShowAvailable} className='btn btn-secondary mb-4'>
+       <button onClick={toggleShowAvailable} className='btn bg-primary text-white mb-4'>
           {showAvailable ? 'Show All Books' : 'show Available Books'}
         </button>
 
-        <select onChange={handleViewChange} value={viewMode} className='select select-bordered'>
+        <select onChange={handleViewChange} value={viewMode} className=' select select-bordered'>
         <option value="">Select View</option>
 
           <option value="Card">Card View</option>
@@ -64,9 +64,9 @@ const AllBooks = () => {
         {viewMode === 'Card' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {filteredBooks.map((book) => (
-            <div key={book._id} className="card bg-base-100 shadow-xl">
+            <div key={book._id} className="card bg-base-100 w-96 h-96 shadow-xl">
               <figure className="px-10 pt-10">
-                <img src={book.image} alt={book.name} className="rounded-xl" />
+                <img src={book.image} alt={book.name} className="rounded-xl h-64 w-96" />
               </figure>
               <div className="card-body items-center text-center">
                 <h2 className="card-title">{book.name}</h2>
@@ -82,7 +82,7 @@ const AllBooks = () => {
                 ></ReactStars>
                 <div className="card-actions">
                   <Link to={`/updateBook/${book._id}`}>
-                    <button className="btn btn-primary">Update</button>
+                    <button className="btn bg-accent">Update</button>
                   </Link>
                 </div>
               </div>
@@ -125,7 +125,7 @@ const AllBooks = () => {
                   </td>
                   <td className='border border-gray-300 px-4 py-2'>
                   <Link to={`/updateBook/${book._id}`}>
-                    <button className="btn btn-primary">Update</button>
+                    <button className="btn bg-accent">Update</button>
                   </Link>
                   </td>
                   
