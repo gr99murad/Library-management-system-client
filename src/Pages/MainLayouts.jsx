@@ -9,11 +9,12 @@ import { ToastContainer } from 'react-toastify';
 
 const MainLayouts = () => {
     return (
-        <div>
+        <div className='bg-[#e2d8d8]'>
             
-            <div className='max-w-7xl mx-auto'>
+            
             
             <Navbar></Navbar>
+            <div className='max-w-7xl mx-auto'>
             <Outlet></Outlet>
             
         </div>

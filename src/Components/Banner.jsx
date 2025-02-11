@@ -17,7 +17,7 @@ const Banner = () => {
    
     
     return (
-        <div className='max-w-screen-xl mx-auto px-4'>
+        <div className='max-w-screen-xl mx-auto px-4 py-20'>
             <Slider {...setting}>
                 <div className='flex justify-center h-[300px] bg-gradient-to-br from-blue-500 via-cyan-400 to-blue-600 text-white text-center rounded-lg p-6 shadow-lg'>
                     <h3 className='text-4xl font-bold mb-4 text-shadow-lg'>Welcome to Our Library</h3>
