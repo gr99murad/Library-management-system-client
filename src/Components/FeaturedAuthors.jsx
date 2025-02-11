@@ -21,7 +21,7 @@ const FeaturedAuthors = () => {
           },
     ];
     return (
-        <div>
+        <div className='px-7 md:px-6 lg:px-4 '>
             <h2 className='text-4xl font-semibold mb-4 text-center'>Featured Authors of the Month</h2>
 
             <div>

@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext/AuthContext";
 import { getAuth, signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, setOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     const auth = getAuth();
@@ -14,6 +15,7 @@ const Navbar = () => {
         // console.log('User LOgged Out');
         // setOutUser(null);
         Swal.fire("Success", "Logout successfully!", "success");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error.message);
@@ -23,25 +25,49 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <Link to="/" className="text-text hover:text-primary">
+          Home
+        </Link>
       </li>
+      <li>
+        <Link to="/about" className="text-text hover:text-primary">
+          About
+        </Link>
+      </li>
+      <li>
+        <Link to="/contact" className="text-text hover:text-primary">
+          Contact
+        </Link>
+      </li>
+      <li>
+        <Link to="/allBooks" className="text-text hover:text-primary">
+          All Books
+        </Link>
+      </li>
+      <li>
+        <Link to="/addBook" className="text-text hover:text-primary">
+          Add Book
+        </Link>
+      </li>
+      <li>
+        <Link to="/borrowedBooks" className="text-text hover:text-primary">
+          Borrowed Books
+        </Link>
+      </li>
+
       {user && (
         <>
           <li>
-            <NavLink to="/allBooks">All Books</NavLink>
-          </li>
-          <li>
-            <NavLink to="/addBook">Add Book</NavLink>
-          </li>
-          <li>
-            <NavLink to="/borrowedBooks">Borrowed Books</NavLink>
+            <Link to="/profile" className="text-text hover:text-primary">
+              Profile
+            </Link>
           </li>
         </>
       )}
     </>
   );
   return (
-    <div className=" bg-[#e2d8d8] fixed top-0 w-full z-10 ">
+    <div className=" bg-[#d4c4c4] fixed top-0 w-full z-50 shadow-lg ">
       <div className="navbar max-w-7xl mx-auto">
         <div className="navbar-start ">
           <div className="dropdown">
@@ -63,7 +89,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-[#e9e2e2] rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
@@ -81,8 +107,14 @@ const Navbar = () => {
         <div className="navbar-end">
           {!user ? (
             <>
-              <NavLink to="/auth/login">Login</NavLink>
-              <NavLink to="/auth/register">Registers</NavLink>
+              <div className="flex gap-6">
+                <Link to="/auth/login" className="btn btn-outline ">
+                  Login
+                </Link>
+                <Link to="/auth/register" className="btn btn-outline">
+                  Registers
+                </Link>
+              </div>
             </>
           ) : (
             <div className="dropdown dropdown-end">

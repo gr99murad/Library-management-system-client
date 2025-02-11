@@ -20,7 +20,7 @@ const BookCategories = () => {
       });
   }, []);
   return (
-    <div className="max-w-screen-lg mx-auto px-4 py-10">
+    <div className="max-w-screen-lg mx-auto px-4">
       <h2 className="text-4xl text-center text-text  font-bold mt-10">
         Book Category
       </h2>
