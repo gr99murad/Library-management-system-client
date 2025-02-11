@@ -17,7 +17,7 @@ const Banner = () => {
    
     
     return (
-        <div className='max-w-screen-xl mx-auto px-7 md:px-6 lg:px-4 py-20'>
+        <div className='max-w-screen-xl mx-auto px-7 md:px-6 lg:px-4 '>
             <Slider {...setting}>
                 <div className='relative '>
                     <img className='h-96  w-full object-cover' src="https://i.ibb.co.com/s9jCp8BL/handsome-guy-study-library-1.jpg" alt="Library" />

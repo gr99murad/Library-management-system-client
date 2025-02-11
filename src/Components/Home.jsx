@@ -11,13 +11,23 @@ const Home = () => {
     
     return (
         <div className=''>
-            
+            <div className='py-20 md:py-24'>
             <Banner></Banner>
-            <div className='py-10'>
+
+            </div>
+            
+            <div className='py-20 md:py-24'>
             <BookCategories></BookCategories>
             </div>
+            <div className='py-20 md:py-24'>
             <FeaturedAuthors></FeaturedAuthors>
+
+            </div>
+            <div className='py-20 md:py-24'>
             <UpComingEvents></UpComingEvents>
+
+            </div>
+            
 
         </div>
     );
