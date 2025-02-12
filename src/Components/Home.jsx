@@ -4,6 +4,7 @@ import BookCategories from './BookCategories';
 import FeaturedAuthors from './FeaturedAuthors';
 import UpComingEvents from './UpComingEvents';
 import ContactUs from '../Pages/ContactUs';
+import AboutUs from '../Pages/AboutUs';
 
 
 
@@ -20,6 +21,10 @@ const Home = () => {
             <div className='py-20 md:py-24'>
             <BookCategories></BookCategories>
             </div>
+            <div id='aboutUs' className='py-20 md:py-24'>
+                <AboutUs></AboutUs>
+
+            </div>
             <div className='py-20 md:py-24'>
             <FeaturedAuthors></FeaturedAuthors>
 
@@ -28,10 +33,11 @@ const Home = () => {
             <UpComingEvents></UpComingEvents>
 
             </div>
-            <div className='py-20 md:py-24'>
-                <ContactUs></ContactUs>
+            <div id='contact' className='py-20 md:py-24'>
+                <ContactUs ></ContactUs>
 
             </div>
+            
             
 
         </div>

@@ -5,6 +5,18 @@ import { getAuth, signOut } from "firebase/auth";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if(contactSection){
+      contactSection.scrollIntoView({ behavior: "smooth"});
+    }
+  }
+  const scrollToAboutUs = () => {
+    const aboutSection = document.getElementById("aboutUs");
+    if(aboutSection){
+      aboutSection.scrollIntoView({ behavior: "smooth"});
+    }
+  }
   const { user, setOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -30,14 +42,14 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link to="/about" className="text-text hover:text-primary">
+        <button onClick={scrollToAboutUs} className="text-text hover:text-primary">
           About
-        </Link>
+        </button>
       </li>
       <li>
-        <Link to="/contact" className="text-text hover:text-primary">
+        <button onClick={scrollToContact} className="text-text hover:text-primary">
           Contact
-        </Link>
+        </button>
       </li>
       <li>
         <Link to="/allBooks" className="text-text hover:text-primary">
@@ -108,7 +120,7 @@ const Navbar = () => {
           {!user ? (
             <>
               <div className="flex gap-6">
-                <Link to="/auth/login" className="btn btn-outline text-white bg-primary ">
+                <Link to="/auth/login" className="btn btn-outline bg-primary ">
                   Login
                 </Link>
                 <Link to="/auth/register" className="btn btn-outline">
