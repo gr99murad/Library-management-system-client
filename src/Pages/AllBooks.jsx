@@ -48,7 +48,7 @@ const AllBooks = () => {
     return (
       <div className='py-32'>
 
-       <div className='flex gap-10 justify-center pt-4'>
+       <div className='flex gap-5 justify-center pt-4'>
        <button onClick={toggleShowAvailable} className='btn bg-primary text-white mb-4'>
           {showAvailable ? 'Show All Books' : 'show Available Books'}
         </button>
@@ -90,8 +90,9 @@ const AllBooks = () => {
           ))}
         </div>
         ):(
-          <table className='table-auto w-full border-collapse border border-gray-300'>
-            <thead>
+          <div className='overflow-x-auto'>
+            <table className='table-auto w-full border-collapse border border-gray-300'>
+            <thead className='bg-gray-300'>
               <tr>
                 <th className='border border-gray-300 px-4 py-2'>Image</th>
                 <th className='border border-gray-300 px-4 py-2'>Name</th>
@@ -107,7 +108,7 @@ const AllBooks = () => {
             </thead>
             <tbody>
               {filteredBooks.map(book => (
-                <tr key={book._id}>
+                <tr key={book._id} className='hover:bg-gray-100'>
                   <td className='border border-gray-300 px-4 py-2'>
                     <img src={book.image} alt={book.name} className='w-16 h-16 rounded' />
                   </td>
@@ -133,6 +134,7 @@ const AllBooks = () => {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
     );

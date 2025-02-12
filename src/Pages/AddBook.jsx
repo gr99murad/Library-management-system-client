@@ -39,7 +39,7 @@ const AddBook = () => {
         }
     };
     return (
-        <div className='px-24 py-32'>
+        <div className='mx-4 py-32'>
             <h2 className='text-4xl font-bold my-5 text-text'>Add Book</h2>
             <form onSubmit={handleSubmit}>
                 <div>

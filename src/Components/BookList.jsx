@@ -44,7 +44,7 @@ const BookList = () => {
               <p>Rating: {book.rating}</p>
               <ReactStars count={5} value={book.rating} size={24} activeColor='#ffd700'></ReactStars>
               <div className="card-actions">
-                <button className="btn bg-accent" onClick={() => handleDetails(book._id)}>Details</button>
+                <button className="btn bg-accent" onClick={() => handleDetails(book._id)}>See More</button>
               </div>
             </div>
           </div>

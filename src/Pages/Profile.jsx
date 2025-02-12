@@ -35,13 +35,13 @@ const Profile = () => {
                 </div>
                 <div>
                     <label className='label'>Name</label>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} className='w-1/2 input input-bordered' />
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} className='w-full input input-bordered' />
                 </div>
                 <div>
                     <label className='label'>Photo URL</label>
-                    <input type="text" value={photoURL} onChange={(e) => setPhotoURL(e.target.value)} className='w-1/2 input input-bordered' />
+                    <input type="text" value={photoURL} onChange={(e) => setPhotoURL(e.target.value)} className='w-full input input-bordered' />
                 </div>
-                <button type='submit' className='w-1/2 rounded-lg bg-accent py-2'>Update Profile</button>
+                <button type='submit' className='w-full rounded-lg bg-accent py-2'>Update Profile</button>
             </form>
         </div>
     );
