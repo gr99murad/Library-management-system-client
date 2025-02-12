@@ -21,6 +21,8 @@ import BookList from './Components/BookList.jsx';
 import DetailsBooks from './Components/DetailsBooks.jsx';
 import PrivateRoute from './Components/PrivateRoute.jsx';
 import UpdateBook from './Components/UpdateBook.jsx';
+import ContactUs from './Pages/ContactUs.jsx';
+import Profile from './Pages/Profile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
       },
       {
         path: "/allBooks",

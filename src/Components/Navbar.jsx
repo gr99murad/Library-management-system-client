@@ -69,6 +69,7 @@ const Navbar = () => {
 
       {user && (
         <>
+        
           <li>
             <Link to="/profile" className="text-text hover:text-primary">
               Profile
