@@ -82,9 +82,9 @@ const DetailsBooks = () => {
         setIsModalOpen(false);
     };
     return (
-      <div>
+      <div className='mx-24 py-32'>
         {book ? (
-          <div className="card bg-base-100 w-96 shadow-xl">
+          <div className="card bg-[#e9e2e2] w-96 shadow-xl">
             <figure className="px-10 pt-10">
               <img src={book.image} alt="Shoes" className="rounded-xl" />
             </figure>
@@ -98,7 +98,7 @@ const DetailsBooks = () => {
                 <button
                   onClick={handleBorrowClick}
                   disabled={book.quantity === 0}
-                  className="btn btn-primary"
+                  className="btn bg-accent"
                 >
                   Borrow
                 </button>
@@ -112,7 +112,8 @@ const DetailsBooks = () => {
         )}
 
         {isModalOpen && (
-            <div className='modal modal-open'>
+            <div className=''>
+                <div className='modal  modal-open'>
                 <div className='modal-box'>
                     <h2 className='text-xl font-bold mb-4'>Borrow Book</h2>
                     {error && <p>{error}</p>}
@@ -135,14 +136,15 @@ const DetailsBooks = () => {
 
                         </div>
                         <div className='modal-action'>
-                            <button type='submit' className='btn btn-primary'>Confirm</button>
-                            <button className='btn' onClick={handleCloseModal}>Cancel</button>
+                            <button type='submit' className='btn bg-primary text-white'>Confirm</button>
+                            <button className='btn bg-red-500' onClick={handleCloseModal}>Cancel</button>
 
                         </div>
                     </form>
 
                 </div>
 
+            </div>
             </div>
         )}
       </div>
