@@ -78,7 +78,7 @@ const UpdateBook = () => {
     
 
     return (
-        <div className='form-container'>
+        <div className='form-container px-24 py-32'>
             <h2 className='text-4xl font-bold text-center'>Update Book</h2>
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>
@@ -113,7 +113,7 @@ const UpdateBook = () => {
                     <input className='input input-bordered' type="number" min="1" max="5" value={rating} onChange={(e) => setRating(e.target.value)} />
 
                 </div>
-                <button className='btn btn-primary my-4' type='submit'>Submit</button>
+                <button className='btn bg-accent my-4' type='submit'>Submit</button>
 
             </form>
             

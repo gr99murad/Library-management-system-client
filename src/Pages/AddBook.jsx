@@ -39,8 +39,8 @@ const AddBook = () => {
         }
     };
     return (
-        <div className=''>
-            <h2 className='text-4xl font-bold my-5'>Add Book</h2>
+        <div className='px-24 py-32'>
+            <h2 className='text-4xl font-bold my-5 text-text'>Add Book</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label className='label'>Image URL:</label>
@@ -51,15 +51,18 @@ const AddBook = () => {
                     <label className='label'>Book Name:</label>
                     <input className='input input-bordered' type="text" name='name' value={formData.name} onChange={handleChange} />
                 </div>
+                
+                </div>
                 <div>
                     <label className='label'>Quantity:</label>
                     <input className='input input-bordered' type="number" name='quantity' value={formData.quantity} onChange={handleChange} />
-                </div>
                 </div>
                 <div className='flex gap-5 mt-5'>
                 <div>
                     <label className='label'>Author Name:</label>
                     <input className='input input-bordered' type="text" name='author' value={formData.author} onChange={handleChange} />
+                </div>
+                
                 </div>
                 <div>
                     <label className='label'>Category:</label>
@@ -70,7 +73,6 @@ const AddBook = () => {
                         <option value="children's Books">Children's Books</option>
                     
                     </select> 
-                </div>
                 </div>
                 <div className='flex gap-5 my-5'>
                 <div>
@@ -83,20 +85,20 @@ const AddBook = () => {
                     <input className='input input-bordered' type="number" name='rating' value={formData.rating} min="1" max="5" onChange={handleChange} />
                 </div>
                 </div>
-                <button className='btn btn-primary my-5' type='submit'>Add Book</button>
+                <button className='btn bg-accent my-5' type='submit'>Add Book</button>
                 
             </form>
             <div>
-                <h3 className='text-xl font-bold text-center'>Book content</h3>
-                <p>This section provides additional information about the book. It helps the reader get a deeper understanding of its context, themes, and what makes it special. Below are key elements to describe the book:</p>
+                <h3 className='text-xl font-bold text-center py-4'>Book content</h3>
+                <p className='text-[#2d2b3b]'>This section provides additional information about the book. It helps the reader get a deeper understanding of its context, themes, and what makes it special. Below are key elements to describe the book:</p>
 
                 <div>
-                    <h4 className='text-xl font-semibold'>Setting</h4>
+                    <h4 className='text-xl font-semibold py-4'>Setting</h4>
                     <p>The setting provides context for the story. Example: Takes place in a small town in the 1920s, or on a spaceship in the future.</p>
                 </div>
 
                 <div>
-                    <h4 className='text-xl font-semibold'>
+                    <h4 className='text-xl font-semibold py-4'>
                     Themes
                     </h4>
                     <p>Themes are the underlying messages or ideas explored in the book. Example: Friendship, Loyalty, Betrayal, Hope, etc.</p>

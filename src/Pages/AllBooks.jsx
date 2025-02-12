@@ -46,7 +46,7 @@ const AllBooks = () => {
 
     const filteredBooks = showAvailable ? books.filter(book => book.quantity > 0) : books;
     return (
-      <div className='py-24'>
+      <div className='py-32'>
 
        <div className='flex gap-10 justify-center pt-4'>
        <button onClick={toggleShowAvailable} className='btn bg-primary text-white mb-4'>
@@ -62,11 +62,11 @@ const AllBooks = () => {
         </select>
        </div>
         {viewMode === 'Card' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           {filteredBooks.map((book) => (
-            <div key={book._id} className="card bg-base-100 w-96 h-96 shadow-xl">
+            <div key={book._id} className="card bg-[#e9e2e2] max-w-96 shadow-xl">
               <figure className="px-10 pt-10">
-                <img src={book.image} alt={book.name} className="rounded-xl h-64 w-96" />
+                <img src={book.image} alt={book.name} className="rounded-xl" />
               </figure>
               <div className="card-body items-center text-center">
                 <h2 className="card-title">{book.name}</h2>

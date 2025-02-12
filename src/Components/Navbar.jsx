@@ -138,7 +138,7 @@ const Navbar = () => {
                   <a>{user.displayName}</a>
                 </li>
                 <li>
-                  <button onClick={handleLogout} className="btn btn-secondary">
+                  <button onClick={handleLogout} className="btn bg-[#937769] text-text">
                     Logout
                   </button>
                 </li>

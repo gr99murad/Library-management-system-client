@@ -28,19 +28,17 @@ const UpComingEvents = () => {
         Library Events & WorkShops
       </h2>
 
-      <div className="space-y-4">
+      <div className="space-y-4 pt-10">
         {events.map((event, index) => (
           <div
             key={index}
-            className="p-4 border border-gray-300 rounded-md bg-gray-50"
+            className="p-4 border border-gray-300 rounded-md bg-[#e9e2e2]"
           >
-            <h3>{event.title}</h3>
+            <h3 className="text-text font-bold text-xl">{event.title}</h3>
             <p>Date: {event.date}</p>
-            <p>Description: {event.description}</p>
+            <p>{event.description}</p>
             <p>Venue: {event.venue}</p>
-            <button className="mt-3 bg-blue-600 px-4 py-4 rounded hover:bg-blue-700">
-              Learn More
-            </button>
+            
           </div>
         ))}
       </div>

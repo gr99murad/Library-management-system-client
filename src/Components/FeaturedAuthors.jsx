@@ -24,12 +24,12 @@ const FeaturedAuthors = () => {
         <div className='px-7 md:px-6 lg:px-4 '>
             <h2 className='text-4xl font-semibold mb-4 text-center'>Featured Authors of the Month</h2>
 
-            <div>
+            <div className='space-y-4 pt-10'>
                 {authors.map((author, index) => (
-                    <div key={index} className='p-4 border border-gray-300 rounded-md bg-gray-50'>
-                        <h3>{author.name}</h3>
-                        <p>{author.bio}</p>
-                        <h4>Notable Works:</h4>
+                    <div key={index} className='p-4 border border-gray-300 rounded-md bg-[#eae4e1]'>
+                        <h3 className='text-text font-bold text-xl'>{author.name}</h3>
+                        <p className='text-[#8d8aa8]'>{author.bio}</p>
+                        <h4 className='font-semibold'>Notable Works:</h4>
                         <ul className='list-disc ml-5'>
 
                             {author.notableWorks.map((work, i) => (
