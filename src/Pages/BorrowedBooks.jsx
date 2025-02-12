@@ -33,28 +33,28 @@ const BorrowedBooks = () => {
         }
     }
     return (
-        <div>
-            <h1 className='text-4xl font-bold text-center'>borrowed books</h1>
+        <div className='px-16 md:px-8 py-32'>
+            <h1 className='text-4xl font-bold text-center py-7'>borrowed books</h1>
 
             { borrowedBooks.length === 0 ? (
                 <p>No borrowed Books.</p>
             ):(
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
                     {borrowedBooks.map((book) => (
-                        <div key={book._id} className="card bg-base-100 w-96 shadow-xl">
+                        <div key={book._id} className="card bg-[#e9e2e2] w-64 lg:w-96 shadow-xl">
                         <figure className="px-10 pt-10">
                           <img src={book.image} alt={book.name} className="rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
                           <h2 className="card-title">{book.name}</h2>
-                          <p>Category:{book.category}</p>
+                          <p>{book.category}</p>
                           <p>Borrowed Date:{new Date(book.borrowedDate).toLocaleDateString()}</p>
                           <p>Return Date:{new Date(book.returnDate).toLocaleDateString()}</p>
 
                           <div className="card-actions">
                             <button
                               onClick={() => handleReturnBook(book._id, book.bookId)}
-                              className="btn btn-primary"
+                              className="btn bg-accent"
                             >
                               Return Book
                             </button>

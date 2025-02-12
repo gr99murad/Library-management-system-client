@@ -28,7 +28,7 @@ const BookList = () => {
       return null;
     }
     return (
-      <div className='py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7'>
+      <div className='py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-32'>
         {books.map(book => (
             <div key={book._id} className="card bg-[#e9e2e2] w-96 shadow-xl">
             <figure className="px-10 pt-10">

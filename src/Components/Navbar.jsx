@@ -108,7 +108,7 @@ const Navbar = () => {
           {!user ? (
             <>
               <div className="flex gap-6">
-                <Link to="/auth/login" className="btn btn-outline ">
+                <Link to="/auth/login" className="btn btn-outline text-white bg-primary ">
                   Login
                 </Link>
                 <Link to="/auth/register" className="btn btn-outline">

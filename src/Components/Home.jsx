@@ -3,6 +3,7 @@ import Banner from './Banner';
 import BookCategories from './BookCategories';
 import FeaturedAuthors from './FeaturedAuthors';
 import UpComingEvents from './UpComingEvents';
+import ContactUs from '../Pages/ContactUs';
 
 
 
@@ -25,6 +26,10 @@ const Home = () => {
             </div>
             <div className='py-20 md:py-24'>
             <UpComingEvents></UpComingEvents>
+
+            </div>
+            <div className='py-20 md:py-24'>
+                <ContactUs></ContactUs>
 
             </div>
             
